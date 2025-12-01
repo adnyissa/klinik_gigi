@@ -1,0 +1,859 @@
+/* =========================================
+    CUSTOM CSS - TEMA DENTACARE (FINAL CONSOLIDATION & PERBAIKAN)
+    ========================================= */
+
+:root {
+    /* Warna Utama KONSISTEN */
+    --primary-color: #1A73E8; /* Konsolidasi ke satu warna biru modern */
+    --primary-blue: #1A73E8; 
+    --primary-dark: #105b9e;
+    --text-dark: #343a40; /* Dibuat lebih gelap dan konsisten */
+    --text-muted: #6c757d;
+    --white: #ffffff;
+    --bg-light: #F8F9FA; 
+    --border-light: #e9ecef;
+    
+    /* Variabel lama yang dipertahankan */
+    --custom-blue-old: #4fc3f7; /* Dipertahankan tapi tidak digunakan lagi */
+}
+
+body { 
+    font-family: 'Poppins', sans-serif; 
+    background-color: var(--bg-light); 
+    color: var(--text-dark);
+    margin: 0; padding: 0;
+}
+
+.text-primary { color: var(--primary-color) !important; }
+.bg-primary { background-color: var(--primary-color) !important; }
+
+
+/* --- 1. LAYOUT FIXED --- */
+.sidebar { 
+    background: var(--primary-color) !important; 
+    min-height: 100vh;
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    z-index: 999;
+    width: 215px !important;
+} 
+
+@media (min-width: 992px) {
+    .content {
+        margin-left: 215px !important; 
+        width: calc(100% - 215px) !important;
+    }
+    
+    .sidebar.open {
+        margin-left: -215px !important;
+    }
+    
+    .content.open {
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .sidebar { margin-left: -215px !important; }
+    .sidebar.open { margin-left: 0 !important; }
+    .content { width: 100% !important; margin-left: 0 !important; }
+}
+
+
+/* --- 2. SIDEBAR CONTENT STYLE --- */
+.sidebar .navbar-brand {
+    margin: 0 1rem 1rem 1rem !important; 
+    text-align: center;
+}
+
+.sidebar .navbar-brand h3 { 
+    color: var(--white) !important;
+    font-weight: 700;
+    font-size: 1.4rem; 
+    letter-spacing: 1px;
+}
+
+.sidebar .navbar {
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+.sidebar .navbar .navbar-nav .nav-link { 
+    color: var(--white) !important; 
+    font-weight: 800;
+    padding: 10px 15px; 
+    margin: 3px 0;
+    transition: all 0.3s ease;
+    border-radius: 0; 
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    white-space: nowrap; 
+}
+
+.sidebar .navbar .navbar-nav .nav-link i {
+    background: var(--white);
+    color: var(--primary-color) !important; 
+    width: 30px; 
+    height: 30px; 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 12px;
+    font-size: 0.8rem;
+}
+
+.sidebar .navbar .navbar-nav .nav-link:hover, 
+.sidebar .navbar .navbar-nav .nav-link.active { 
+    background: var(--white) !important; 
+    color: var(--primary-color) !important; 
+    border-radius: 0 25px 25px 0; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding-left: 20px;
+}
+
+
+/* --- 3. DASHBOARD CARDS & UI (DIPERTAHANKAN + KOREKSI) --- */
+
+.card-clean {
+    background: var(--white);
+    border: none;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+.card-clean:hover { transform: translateY(-5px); }
+
+.card-clean h5 {
+    color: var(--text-muted); font-size: 0.85rem;
+    text-transform: uppercase; font-weight: 600; margin-bottom: 10px;
+}
+.card-clean h2 {
+    color: var(--primary-color); font-weight: 700;
+    font-size: 2.5rem; margin-bottom: 0;
+}
+
+.card-icon-bg {
+    position: absolute; right: 15px; bottom: 15px;
+    font-size: 4.5rem; color: var(--primary-color);
+    opacity: 0.1; transform: rotate(-15deg); pointer-events: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    border-radius: 8px; /* Dibuat modern */
+}
+.btn-primary:hover {
+    background-color: var(--primary-dark) !important;
+    border-color: var(--primary-dark) !important;
+}
+
+.hover-effect:hover { background-color: #f8f9fa; cursor: pointer; }
+
+.card-custom {
+    border-radius: 18px;
+    border: none;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.input-custom {
+    border-radius: 10px !important;
+    padding: 10px 14px !important;
+}
+
+/* Menggunakan --primary-color */
+.btn-main {
+    background: var(--primary-color); 
+    border-radius: 10px;
+    padding: 8px 22px;
+    border: none;
+    color: white;
+    transition: 0.2s;
+}
+.btn-main:hover {
+    background: var(--primary-dark);
+}
+
+/* Hapus styling table thead lama yang konflik */
+/* .table thead {
+    background: #4fc3f7;
+    color: white;
+} */
+
+.btn-action {
+    border-radius: 8px;
+    padding: 5px 14px;
+    font-size: 13px;
+}
+
+.search-box {
+    border-radius: 10px;
+    padding: 8px 14px;
+}
+
+.search-btn {
+    background: var(--primary-color); /* Menggunakan --primary-color */
+    border: none;
+    border-radius: 10px;
+    padding: 8px 18px;
+    color: white;
+}
+.search-btn:hover {
+    background: var(--primary-dark);
+}
+
+/* ===== WRAPPER BESAR HALAMAN ===== */
+.page-wrapper {
+    background: #ffffff;
+    border-radius: 16px; /* Dibuat modern */
+    padding: 20px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+    margin: 20px 0; /* Margin atas bawah */
+}
+
+/* Judul besar halaman */
+.page-title {
+    font-size: 1.8rem; /* Ukuran dikoreksi */
+    font-weight: 700;
+    color: var(--text-dark); /* Dibuat netral */
+    margin-bottom: 25px; /* Margin dikoreksi */
+    text-align: left;
+    border-bottom: none;
+    padding: 0;
+}
+
+/* Card Styling Khusus Pasien */
+.card-premium {
+    background-color: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    box-shadow: none; /* Hilangkan shadow ganda */
+}
+
+.card-title-premium {
+    font-weight: 700;
+    color: var(--primary-color); 
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 15px;
+}
+
+/* Form Input Styling */
+.input-premium, .search-input {
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+}
+
+.input-premium:focus, .search-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(26, 115, 232, 0.25);
+}
+
+.search-input {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+/* ------------------------------------ */
+/* Table Styling (Biru, Lengkung, Modern) */
+/* ------------------------------------ */
+.table {
+    border-collapse: collapse; 
+    margin-top: 0;
+    border-radius: 8px; 
+    overflow: hidden; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); 
+}
+
+.table thead th {
+    /* Implementasi Header Biru Solid */
+    background-color: var(--primary-color); 
+    color: var(--white); 
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem; 
+    padding: 12px 15px;
+    border: none;
+}
+
+/* Lengkungan Sudut Header */
+.table thead tr th:first-child {
+    border-top-left-radius: 8px;
+}
+
+.table thead tr th:last-child {
+    border-top-right-radius: 8px;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid var(--border-light);
+}
+
+.table td {
+    background-color: var(--white);
+    padding: 12px 15px;
+    vertical-align: middle;
+    border: none; 
+}
+
+.table tbody tr:hover td {
+    background-color: #f6f8ff;
+}
+
+/* ------------------------------------ */
+/* Action Buttons (Menggunakan Bootstrap Outline) */
+/* ------------------------------------ */
+.table .btn {
+    padding: 5px 8px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    margin: 2px;
+}
+
+.table .btn-outline-warning { 
+    --bs-btn-color: #ffc107;
+    --bs-btn-border-color: #ffc107;
+}
+.table .btn-outline-danger { 
+    --bs-btn-color: #dc3545;
+    --bs-btn-border-color: #dc3545;
+}
+
+.delete-form {
+    display: inline-block;
+}
+/* =========================
+   Sidebar
+========================= */
+.sidebar {
+    width: 290px;           /* lebar sidebar */
+    height: 100vh;          /* tinggi penuh layar */
+    background-color: #0d3b66; /* biru tua */
+    padding-bottom: 1rem;   /* pb-3 */
+}
+
+.sidebar .navbar-brand h3 {
+    color: #ffffff;
+}
+
+.sidebar .navbar-nav .nav-link {
+    color: #ffffff;
+    padding: 0.75rem 1rem;
+}
+
+.sidebar .navbar-nav .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 0.5rem;
+}
+
+/* Profil user di sidebar */
+.sidebar .d-flex.align-items-center img {
+    width: 40px;
+    height: 40px;
+}
+
+.sidebar .d-flex.align-items-center .bg-success {
+    width: 10px;
+    height: 10px;
+}
+
+/* =========================
+   Navbar Atas
+========================= */
+.navbar {
+    height: 64px;          /* tinggi navbar */
+    padding-left: 0;       /* ps-0 */
+    padding-right: 1rem; /* pe-4 */
+}
+
+/* Navbar Toggler (burger) */
+.sidebar-toggler {
+    width: 50px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0 !important;
+}
+
+/* Dropdown profil user */
+.navbar .nav-item.dropdown .dropdown-menu {
+    border-radius: 0 0 0.5rem 0.5rem;
+    margin: 0;
+}
+
+/* =========================
+   Konten & Footer
+========================= */
+.content {
+    flex: 1; /* biar mengisi sisa layar selain sidebar */
+}
+
+.container-fluid.pt-4.px-4 {
+    padding-top: 1rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}
+
+/* Footer */
+.bg-light.rounded-top {
+    border-radius: 0.5rem 0.5rem 0 0;
+    padding: 1rem;
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+.welcome-container {
+    background-color: #fff;
+    border-radius: 15px;
+    /* Agar tinggi memenuhi layar minus navbar/padding */
+    min-height: 75vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0,0,0,0.05);
+}
+
+.header-klinik {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    color: #0dcaf0; /* Warna Biru Cyan Cerah */
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 15px;
+    width: 90%;
+    text-align: left;
+}
+
+.welcome-title {
+    color: #0dcaf0; /* Warna Biru Cyan Cerah */
+    font-weight: 700;
+    font-size: 3rem; /* Ukuran Besar */
+    margin-bottom: 10px;
+    z-index: 2;
+    position: relative;
+}
+
+.welcome-subtitle {
+    color: #0dcaf0;
+    font-size: 1.2rem;
+    margin-bottom: 0;
+    z-index: 2;
+    position: relative;
+}
+
+/* Ikon Gigi Background Transparan */
+.bg-tooth-icon {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 25rem; /* Sangat Besar */
+    color: #E0F7FA; /* Biru Sangat Pudar */
+    opacity: 0.5;
+    z-index: 1;
+}
+
+/* Sidebar Active State Custom Color (Opsional, biar biru muda) */
+.sidebar .nav-link.active {
+    color: #0dcaf0 !important;
+    background: #FFFFFF !important;
+    border-left: 5px solid #0dcaf0;
+}
+
+/* =========================================================
+   STYLE TAMBAHAN KHUSUS HALAMAN DOKTER (MODERN LOOK)
+   ========================================================= */
+
+/* 1. Card Modern (Wadah Tabel) */
+.card-modern {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+    overflow: hidden; 
+    margin-bottom: 20px;
+    
+    /* --- TAMBAHAN PENTING --- */
+    min-height: 60vh; /* Agar tinggi card minimal 60% dari layar */
+    display: flex;
+    flex-direction: column;
+}
+
+.table-responsive {
+    width: 100%;
+    /* Biar tabelnya mengisi ruang yang ada */
+    flex-grow: 1; 
+}
+
+/* 2. Avatar Bulat (Inisial Nama Dokter) */
+.avatar-circle {
+    width: 45px;
+    height: 45px;
+    background-color: #E3F2FD; /* Biru sangat muda */
+    color: #1A73E8; /* Biru utama */
+    border-radius: 50%; /* Membuat bulat */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-right: 15px;
+    border: 2px solid #fff; /* Border putih biar rapi */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* 3. Badge Status & Spesialisasi */
+.badge {
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+/* Warna Badge Spesialisasi (Biru Muda) */
+.bg-blue-light {
+    background-color: #E3F2FD !important;
+    color: #1A73E8 !important;
+}
+
+/* Warna Badge Status (Hijau Muda) */
+.bg-success-light {
+    background-color: #E8F5E9 !important;
+    color: #2E7D32 !important;
+}
+
+/* 4. Tombol Aksi (Edit/Hapus Kotak Kecil) */
+.btn-icon {
+    width: 35px; 
+    height: 35px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center; 
+    justify-content: center;
+    border-radius: 8px;
+    margin: 0 4px;
+    border: none;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Tombol Edit: Biru Pudar -> Biru Solid saat Hover */
+.btn-light-primary {
+    background-color: #E3F2FD;
+    color: #1A73E8;
+}
+.btn-light-primary:hover {
+    background-color: #1A73E8;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* Tombol Hapus: Merah Pudar -> Merah Solid saat Hover */
+.btn-light-danger {
+    background-color: #FFEBEE;
+    color: #D32F2F;
+}
+.btn-light-danger:hover {
+    background-color: #D32F2F;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* 5. Tombol "Tambah Dokter" Utama */
+.btn-primary-modern {
+    background-color: #1A73E8; /* Google Blue */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 10px rgba(26, 115, 232, 0.2); /* Shadow biru */
+    transition: all 0.3s ease;
+}
+
+.btn-primary-modern:hover {
+    background-color: #155db1;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(26, 115, 232, 0.3);
+    color: #fff;
+}
+
+/* 6. Styling Tabel Agar Header Biru */
+.table thead th {
+    background-color: #1A73E8 !important; /* Header Biru Solid */
+    color: white !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    padding: 16px;
+    border: none;
+}
+
+.table tbody td {
+    padding: 16px;
+    vertical-align: middle;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+/* Efek Hover pada Baris Tabel */
+.table-hover tbody tr:hover {
+    background-color: #f8faff !important; /* Biru sangat tipis saat hover */
+}
+
+.sticky-top {
+    position: sticky;
+    top: 15px; /* Menyesuaikan dengan padding atas */
+}
+
+/* Hover effect pada baris antrian untuk memudahkan identifikasi */
+.rm-row:hover {
+    cursor: pointer;
+    background-color: #f0f8ff !important; /* Warna biru muda saat di-hover */
+}
+
+/* Mengatur tampilan tabel */
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #f7f7f7;
+}
+
+/* Menekankan kolom total */
+#totalTagihanDisplay {
+    transition: all 0.3s ease;
+}
+
+/* Style untuk tombol saat dinonaktifkan (uang kurang) */
+#processPaymentBtn[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Pastikan elemen form-control besar memiliki padding yang cukup */
+.form-control-lg {
+    padding: 0.75rem 1rem;
+    font-size: 1.25rem;
+}
+
+/* --- 1. KARTU SELAMAT DATANG (pasien-welcome-card-bg) --- */
+.pasien-welcome-card-bg {
+    /* Background Gradient Khas Klinik Gigi */
+    background: linear-gradient(135deg, #007bff 0%, #17a2b8 100%); /* Biru Primer ke Teal */
+    color: #ffffff;
+    padding: 30px;
+    border-radius: 15px; /* Sudut membulat */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); 
+    position: relative;
+    overflow: hidden; 
+}
+
+/* Icon Gigi Background (pasien-bg-tooth-icon) */
+.pasien-bg-tooth-icon {
+    position: absolute;
+    top: 50%;
+    right: -20px; 
+    transform: translateY(-50%) rotate(10deg);
+    font-size: 150px;
+    color: rgba(255, 255, 255, 0.12); /* Warna putih transparan */
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Header Klinis (KLINIK GIGI SEMARANG) */
+.pasien-header-klinik {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+/* Judul Utama (pasien-welcome-title) */
+.pasien-welcome-title {
+    color: #ffffff;
+    z-index: 1; 
+    position: relative;
+}
+
+/* Subtitle (pasien-welcome-subtitle) */
+.pasien-welcome-subtitle {
+    color: #ffc107; /* Warna kuning Bootstrap (text-warning) */
+    font-style: italic;
+    z-index: 1;
+    position: relative;
+}
+
+/* --- 2. KARTU STATISTIK UTAMA (pasien-card-stat) --- */
+.pasien-card-stat {
+    position: relative;
+    border: none;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    /* Min-height tidak lagi diperlukan karena kita menggunakan h-100 di HTML */
+    border-left: 5px solid transparent; 
+}
+
+/* Efek Hover */
+.pasien-card-stat:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Penataan Icon di dalam Card Stat */
+.pasien-card-stat i.fa-3x {
+    /* Menambahkan padding pada icon agar tidak terlalu dekat dengan tepi */
+    padding: 10px; 
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Warna Border Kiri berdasarkan isinya */
+/* Kartu 1 (Antrian): Merah (text-danger) */
+.pasien-card-stat:nth-child(1) {
+    border-left-color: #dc3545; 
+}
+/* Kartu 2 (Janji Temu): Hijau (text-success) */
+.pasien-card-stat:nth-child(2) {
+    border-left-color: #28a745;
+}
+/* Kartu 3 (Kunjungan Terakhir): Kuning (text-warning) */
+.pasien-card-stat:nth-child(3) {
+    border-left-color: #ffc107;
+}
+
+/* --- 3. FIX: Hapus border-bottom bawaan dari list-group-flush pada item terakhir --- */
+.list-group-flush .list-group-item:last-child {
+    border-bottom: none !important; 
+}
+
+/* Menambahkan sedikit padding di bawah tombol lihat semua */
+.btn-sm.btn-outline-primary,
+.btn-sm.btn-outline-secondary {
+    margin-bottom: 5px;
+}
+
+.sidebar .navbar-nav .nav-link {
+    position: relative;
+    z-index: 2000;
+}
+
+.sidebar {
+    z-index: 2001;
+}
+
+.overlay, .sidebar-overlay {
+    pointer-events: none !important;
+}
+
+
+:root {
+    --kasir-primary: #198754; /* Hijau Sukses Bootstrap */
+    --kasir-dark: #146c43;
+    --kasir-light: #d1e7dd;
+    --kasir-accent: #ffc107; /* Kuning untuk notifikasi/warning */
+}
+
+/* Sidebar Hijau Gelap */
+.sidebar.bg-dark-green {
+    background: var(--kasir-dark);
+}
+
+.sidebar .navbar .navbar-brand h3 {
+    color: #fff !important;
+}
+
+.sidebar .navbar .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s;
+}
+
+.sidebar .navbar .navbar-nav .nav-link:hover,
+.sidebar .navbar .navbar-nav .nav-link.active {
+    color: var(--kasir-dark);
+    background: #fff;
+    border-left: 5px solid var(--kasir-accent);
+}
+
+/* KARTU SAMBUTAN KASIR */
+.kasir-welcome-card {
+    background: linear-gradient(135deg, var(--kasir-primary) 0%, #20c997 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(25, 135, 84, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.kasir-bg-icon {
+    position: absolute;
+    right: -20px;
+    bottom: -20px;
+    font-size: 10rem;
+    color: rgba(255, 255, 255, 0.1);
+    transform: rotate(-15deg);
+}
+
+/* KARTU STATISTIK */
+.kasir-stat-card {
+    border: none;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 4px solid var(--kasir-primary);
+}
+
+.kasir-stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+.kasir-stat-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1.5rem;
+}
+
+/* TABEL TRANSAKSI */
+.table-kasir thead {
+    background-color: var(--kasir-primary);
+    color: white;
+}
+
+.badge-status-lunas {
+    background-color: var(--kasir-light);
+    color: var(--kasir-dark);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.badge-status-pending {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+

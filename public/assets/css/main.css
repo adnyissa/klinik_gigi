@@ -1107,7 +1107,7 @@ section,
 /*--------------------------------------------------------------
 # Services Section
 --------------------------------------------------------------*/
-.services .service-item {
+.layanan .layanan-item {
   background-color: var(--surface-color);
   text-align: center;
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
@@ -1116,7 +1116,7 @@ section,
   height: 100%;
 }
 
-.services .service-item .icon {
+.layanan .layanan-item .icon {
   margin: 0 auto;
   width: 64px;
   height: 64px;
@@ -1130,13 +1130,13 @@ section,
   transform-style: preserve-3d;
 }
 
-.services .service-item .icon i {
+.layanan .layanan-item .icon i {
   color: var(--contrast-color);
   font-size: 28px;
   transition: ease-in-out 0.3s;
 }
 
-.services .service-item .icon::before {
+.layanan .layanan-item .icon::before {
   position: absolute;
   content: "";
   left: -8px;
@@ -1149,37 +1149,37 @@ section,
   transform: translateZ(-1px);
 }
 
-.services .service-item h3 {
+.layanan .layanan-item h3 {
   font-weight: 700;
   margin: 10px 0 15px 0;
   font-size: 22px;
 }
 
-.services .service-item p {
+.layanan .layanan-item p {
   line-height: 24px;
   font-size: 14px;
   margin-bottom: 0;
 }
 
-.services .service-item:hover {
+.layanan .layanan-item:hover {
   background: var(--accent-color);
   border-color: var(--accent-color);
 }
 
-.services .service-item:hover .icon {
+.layanan .layanan-item:hover .icon {
   background: var(--surface-color);
 }
 
-.services .service-item:hover .icon i {
+.layanan .layanan-item:hover .icon i {
   color: var(--accent-color);
 }
 
-.services .service-item:hover .icon::before {
+.layanan .layanan-item:hover .icon::before {
   background: color-mix(in srgb, var(--background-color), transparent 70%);
 }
 
-.services .service-item:hover h3,
-.services .service-item:hover p {
+.layanan .layanan-item:hover h3,
+.layanan .layanan-item:hover p {
   color: var(--contrast-color);
 }
 
@@ -1726,4 +1726,140 @@ section,
 --------------------------------------------------------------*/
 .starter-section {
   /* Add your styles here */
+}
+
+.login-body {
+    /* Background Klinik blur */
+    background-image: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2053&auto=format&fit=crop'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex; /* Flex hanya aktif di halaman login agar ke tengah */
+    align-items: center;
+    justify-content: center;
+    margin: 0; /* Reset margin browser default */
+}
+
+/* Pastikan overlay hanya berlaku jika berada di dalam login-body (Opsional tapi lebih aman) */
+.login-body .bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(5px);
+    z-index: -1;
+}
+
+/* Sisa CSS lainnya (card-login, btn-custom, dll) bisa tetap sama 
+   karena nama class-nya sudah unik dan jarang bentrok. */
+.card-login {
+    border: none;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.login-image {
+    background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=1964&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    min-height: 500px;
+}
+
+.btn-custom {
+    background-color: #22d3ee;
+    border: none;
+    color: white;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-custom:hover {
+    background-color: #06b6d4;
+    color: white;
+}
+
+.text-custom {
+    color: #22d3ee;
+}
+
+.form-control {
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.register-body {
+    /* Background Klinik blur */
+    background-image: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2053&auto=format&fit=crop'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex; /* Untuk memposisikan konten ke tengah */
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0; /* Tambah padding agar tidak mentok saat di HP */
+    margin: 0;
+}
+
+.register-body .bg-overlay {
+    position: fixed; /* Fixed agar full screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(5px);
+    z-index: -1;
+}
+
+.card-register {
+    border: none;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.register-image {
+    /* Foto Pasien Cowok Tersenyum (Mirip referensi Anda) */
+    background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1887&auto=format&fit=crop');
+    background-size: cover;
+    background-position: top center;
+    min-height: 600px; /* Lebih tinggi karena field register lebih banyak */
+}
+
+/* Menggunakan kembali style umum (Tombol, Warna Teks, Input Form) */
+.btn-custom {
+    background-color: #22d3ee; /* Warna Cyan */
+    border: none;
+    color: white;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-custom:hover {
+    background-color: #06b6d4;
+    color: white;
+}
+
+.text-custom {
+    color: #22d3ee;
+}
+
+.form-control {
+    border-radius: 10px;
+    padding: 12px;
+    border: 1px solid #ced4da;
+}
+
+.form-control:focus {
+    border-color: #22d3ee;
+    box-shadow: 0 0 0 0.25rem rgba(34, 211, 238, 0.25);
 }

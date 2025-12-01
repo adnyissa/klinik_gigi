@@ -617,17 +617,17 @@ h6 {
   padding-top: 50px;
 }
 
-.footer .footer-about .logo {
+.footer .footer-tentang .logo {
   line-height: 1;
   margin-bottom: 25px;
 }
 
-.footer .footer-about .logo img {
+.footer .footer-tentang .logo img {
   max-height: 40px;
   margin-right: 6px;
 }
 
-.footer .footer-about .logo span {
+.footer .footer-tentang .logo span {
   color: var(--heading-color);
   font-family: var(--heading-font);
   font-size: 26px;
@@ -635,7 +635,7 @@ h6 {
   letter-spacing: 1px;
 }
 
-.footer .footer-about p {
+.footer .footer-tentang p {
   font-size: 14px;
   font-family: var(--heading-font);
 }
@@ -1016,47 +1016,67 @@ section,
 /*--------------------------------------------------------------
 # About Section
 --------------------------------------------------------------*/
-.about .content h3 {
+.tentang .content h3 {
   font-size: 2rem;
   font-weight: 700;
 }
 
-.about .content ul {
+.tentang .content ul {
   list-style: none;
   padding: 0;
 }
 
-.about .content ul li {
+.tentang .content ul li {
   display: flex;
   align-items: flex-start;
   margin-top: 40px;
 }
 
-.about .content ul i {
+.tentang .content ul i {
   flex-shrink: 0;
   font-size: 48px;
   color: var(--accent-color);
   margin-right: 20px;
 }
 
-.about .content ul h5 {
+.tentang .content ul h5 {
   font-size: 18px;
   font-weight: 700;
 }
 
-.about .content ul p {
+.tentang .content ul p {
   font-size: 15px;
 }
 
-.about .content p:last-child {
+.tentang .content p:last-child {
   margin-bottom: 0;
 }
 
-.about .pulsating-play-btn {
+.tentang .pulsating-play-btn {
   position: absolute;
   left: calc(50% - 47px);
   top: calc(50% - 47px);
 }
+
+.play-wrapper {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+}
+
+.play-wrapper img {
+  width: 100%;
+  display: block;
+}
+
+.pulsating-play-btn {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 10 !important;
+}
+
 
 /*--------------------------------------------------------------
 # Stats Section
@@ -1727,3 +1747,5 @@ section,
 .starter-section {
   /* Add your styles here */
 }
+
+/* GANTI 'body' MENJADI '.login-body' */
