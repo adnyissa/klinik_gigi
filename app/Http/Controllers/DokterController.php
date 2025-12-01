@@ -67,7 +67,7 @@ class DokterController extends Controller
             ->get();
             
         // Kirim data ke View
-        return view('dashboard_dokter', compact(
+        return view('dokter.dashboard', compact(
             'dokter',
             'pasienHariIni',
             'pasienMenunggu',

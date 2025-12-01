@@ -10,6 +10,7 @@ class PasienController extends Controller
 {
     public function index()
     {
+        
         $pasiens = Pasien::latest()->get();
         return view('pasien.dashboard', compact('pasiens'));
     }

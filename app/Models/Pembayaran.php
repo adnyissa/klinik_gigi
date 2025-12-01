@@ -13,12 +13,18 @@ class Pembayaran extends Model
     protected $primaryKey = 'pembayaran_id';
 
     protected $fillable = [
-    'rekam_medis_id', // Harus ada
-    'pasien_id', 
-    'tgl_pembayaran', 
-    'total_biaya', // Harus ada
-    'metode_pembayaran', 
-    'status',
-    // ... field lainnya
-];
+        'rekam_medis_id',
+        'pasien_id',
+        'kasir_id',
+        'tgl_pembayaran',
+        'jumlah_dibayar',
+        'metode_pembayaran',
+        'bukti_pembayaran',
+        'status',
+    ];
+
+    public function rekamMedis()
+    {
+        return $this->belongsTo(RekamMedis::class, 'rekam_medis_id', 'rekam_medis_id');
+    }
 }

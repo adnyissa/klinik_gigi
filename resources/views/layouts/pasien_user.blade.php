@@ -54,16 +54,16 @@
                     <a href="{{ route('pasien.dashboard') }}" class="nav-item nav-link {{ Request::routeIs('pasien.dashboard') ? 'active' : '' }}">
                         <i class="fa-solid fa-house me-2"></i> Dashboard
                     </a>
-                    <a href="{{ route('pasien.konsultasi.index') }}" class="nav-item nav-link {{ Request::routeIs('pasien.konsultasi.index') ? 'active' : '' }}">
+                    <a href="{{ route('pasien.konsultasi.index') }}" class="nav-item nav-link {{ Request::routeIs('pasien.konsultasi.*') ? 'active' : '' }}">
                         <i class="fa-solid fa-calendar-check me-2"></i> Konsultasi
                     </a>
-                    <a href="#" class="nav-item nav-link">
+                    <a href="{{ route('pasien.jadwal.index') }}" class="nav-item nav-link {{ Request::routeIs('pasien.jadwal.*') ? 'active' : '' }}">
                         <i class="fa-regular fa-clock me-2"></i> Jadwal Praktik
                     </a>
-                    <a href="#" class="nav-item nav-link">
+                    <a href="{{ route('pasien.rekam.index') }}" class="nav-item nav-link {{ Request::routeIs('pasien.rekam.*') ? 'active' : '' }}">
                         <i class="fa-solid fa-file-medical me-2"></i> Rekam Medis
                     </a>
-                    <a href="#" class="nav-item nav-link">
+                    <a href="{{ route('pasien.pembayaran.index') }}" class="nav-item nav-link {{ Request::routeIs('pasien.pembayaran.*') ? 'active' : '' }}">
                         <i class="fa-solid fa-wallet me-2"></i> Pembayaran
                     </a>
                 </div>

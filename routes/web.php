@@ -16,6 +16,9 @@ use App\Http\Controllers\AdminPembayaranController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PasienKonsultasiController;
 use App\Http\Controllers\KasirController;
+use App\Http\Controllers\PasienJadwalController;
+use App\Http\Controllers\PasienRekamMedisController;
+use App\Http\Controllers\PasienPembayaranController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
@@ -31,15 +34,13 @@ Route::middleware(['auth', 'role:dokter'])->prefix('dokter')->name('dokter.')->g
     // FIX 404: Redirect akses root prefix '/dokter' ke '/dokter/dashboard'
     // Ini menangani kasus jika controller login me-redirect ke '/dokter' saja
     Route::get('/', function () {
-        return redirect()->route('dokter.dashboard');
+        return redirect()->route('dashboard');
     });
 
     // Dashboard: URL /dokter/dashboard (Route Name: dokter.dashboard)
-    Route::get('/dashboard', [DokterController::class, 'index'])->name('dashboard');
+    Route::get('dashboard', [DokterController::class, 'index'])->name('dashboard');
 
-    // Contoh penambahan route fitur dokter lainnya nanti:
-    // Route::get('/jadwal', [DokterController::class, 'jadwal'])->name('jadwal');
-    // Route::get('/periksa/{id}', [DokterController::class, 'periksa'])->name('periksa');
+    
 });
 
 
@@ -48,6 +49,9 @@ Route::middleware(['auth', 'role:pasien'])->prefix('pasien')->name('pasien.')->g
     Route::get('/dashboard', [PasienController::class, 'index'])->name('dashboard');
     Route::resource('konsultasi', PasienKonsultasiController::class)->only(['index', 'create', 'store']);
     Route::post('konsultasi/{konsultasi_id}/cancel', [PasienKonsultasiController::class, 'cancel'])->name('konsultasi.cancel');
+    Route::get('/jadwalpraktik', [PasienJadwalController::class, 'index'])->name('jadwal.index');
+    Route::get('/rekammedis', [PasienRekamMedisController::class, 'index'])->name('rekam.index');
+    Route::get('/pembayaran', [PasienPembayaranController::class, 'index'])->name('pembayaran.index');
 });
 
 Route::middleware(['auth', 'role:kasir'])->group(function () {
