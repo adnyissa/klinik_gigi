@@ -16,45 +16,75 @@ use App\Http\Controllers\AdminPembayaranController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PasienKonsultasiController;
 use App\Http\Controllers\KasirController;
+use App\Http\Controllers\DokterDashboardController;
+use App\Http\Controllers\DokterJadwalController; 
 
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+*/
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 
+// Authentication Routes
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/register', [RegistrasiController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegistrasiController::class, 'register']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::middleware(['auth', 'role:dokter'])->prefix('dokter')->name('dokter.')->group(function () {
-    
-    // FIX 404: Redirect akses root prefix '/dokter' ke '/dokter/dashboard'
-    // Ini menangani kasus jika controller login me-redirect ke '/dokter' saja
-    Route::get('/', function () {
-        return redirect()->route('dokter.dashboard');
+// ====================================================
+// ROLE: DOKTER
+// ====================================================
+Route::middleware(['auth', 'role:dokter'])
+    ->prefix('dokter')
+    ->name('dokter.')
+    ->group(function () {
+        
+        // Dashboard Dokter
+        Route::get('/dashboard', [DokterDashboardController::class, 'index'])->name('dashboard');
+
+        // Jadwal Dokter
+        Route::get('/jadwal', [DokterJadwalController::class, 'index'])->name('jadwal');
+        Route::post('/jadwal', [DokterJadwalController::class, 'store'])->name('jadwal.store');
+        Route::post('/jadwal/{id}/status', [DokterJadwalController::class, 'updateStatus'])->name('jadwal.status');
+        Route::delete('/jadwal/{id}', [DokterJadwalController::class, 'destroy'])->name('jadwal.destroy');
+
+        // Periksa Pasien
+        Route::get('/periksa', [DokterDashboardController::class, 'periksaPasien'])->name('periksa');
+        Route::post('/antrian', [DokterDashboardController::class, 'storeAntrian'])->name('antrian.store');
+
+        // Riwayat Pasien
+        Route::get('/riwayat', [DokterDashboardController::class, 'riwayatPasien'])->name('riwayat');
+        Route::post('/rekam-medis', [DokterDashboardController::class, 'storeRekamMedis'])->name('rekam-medis.store');
+
+        // Resep Obat
+        Route::get('/resep', [DokterDashboardController::class, 'resepObat'])->name('resep');
     });
 
-    // Dashboard: URL /dokter/dashboard (Route Name: dokter.dashboard)
-    Route::get('/dashboard', [DokterController::class, 'index'])->name('dashboard');
+// ====================================================
+// ROLE: PASIEN
+// ====================================================
+Route::middleware(['auth', 'role:pasien'])
+    ->prefix('pasien')
+    ->name('pasien.')
+    ->group(function () {
+        Route::get('/dashboard', [PasienController::class, 'index'])->name('dashboard');
+        Route::resource('konsultasi', PasienKonsultasiController::class)->only(['index', 'create', 'store']);
+        Route::post('konsultasi/{konsultasi_id}/cancel', [PasienKonsultasiController::class, 'cancel'])->name('konsultasi.cancel');
+    });
 
-    // Contoh penambahan route fitur dokter lainnya nanti:
-    // Route::get('/jadwal', [DokterController::class, 'jadwal'])->name('jadwal');
-    // Route::get('/periksa/{id}', [DokterController::class, 'periksa'])->name('periksa');
-});
-
-
-
-Route::middleware(['auth', 'role:pasien'])->prefix('pasien')->name('pasien.')->group(function () {
-    Route::get('/dashboard', [PasienController::class, 'index'])->name('dashboard');
-    Route::resource('konsultasi', PasienKonsultasiController::class)->only(['index', 'create', 'store']);
-    Route::post('konsultasi/{konsultasi_id}/cancel', [PasienKonsultasiController::class, 'cancel'])->name('konsultasi.cancel');
-});
-
+// ====================================================
+// ROLE: KASIR
+// ====================================================
 Route::middleware(['auth', 'role:kasir'])->group(function () {
     Route::get('/kasir/dashboard', [KasirController::class, 'index'])->name('kasir.dashboard');
-
 });
 
+// ====================================================
+// ROLE: ADMIN
+// ====================================================
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 

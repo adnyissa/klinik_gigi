@@ -49,4 +49,12 @@ class Konsultasi extends Model
     {
         return $this->belongsTo(JadwalPraktik::class, 'jadwal_id', 'jadwal_id');
     }
+
+    /**
+     * Relasi ke Rekam Medis
+     */
+    public function rekamMedis()
+    {
+        return $this->hasOne(RekamMedis::class, 'konsultasi_id', 'konsultasi_id');
+    }
 }

@@ -803,3 +803,26 @@ document.addEventListener("DOMContentLoaded", function() {
         }, 1000);
     }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const editButtons = document.querySelectorAll(".btn-edit");
+
+    editButtons.forEach(btn => {
+        btn.addEventListener("click", function () {
+
+            let id = this.dataset.id;
+
+            document.getElementById("editNama").value = this.dataset.nama;
+            document.getElementById("editNik").value = this.dataset.nik;
+            document.getElementById("editHp").value = this.dataset.hp;
+            document.getElementById("editLahir").value = this.dataset.lahir;
+            document.getElementById("editKelamin").value = this.dataset.kelamin;
+            document.getElementById("editAlamat").value = this.dataset.alamat;
+
+            // Set action URL
+            document.getElementById("formEdit").action = "/admin/pasien/" + id;
+        });
+    });
+
+});
